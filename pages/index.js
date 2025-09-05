@@ -26,11 +26,6 @@ const generateTodo = (data) => {
   //  todoNameEl.textContent = data.name;
   //  todoCheckboxEl.checked = data.completed;
 
-  // Apply id and for attributes.
-  // The id will initially be undefined for new todos.
-  //  todoCheckboxEl.id = `todo-${data.id}`;
-  //  todoLabel.setAttribute("for", `todo-${data.id}`);
-
   // If a due date has been set, parsing this it with `new Date` will return a
   // number. If so, we display a string version of the due date in the todo.
   //  const dueDate = new Date(data.date);

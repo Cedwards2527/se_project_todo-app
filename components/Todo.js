@@ -2,21 +2,28 @@ class Todo {
   constructor(data, selector) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
-    console.log(data);
-    console.log(selector);
+  }
+
+  _generateCheckboxEl() {
+    const todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
+    const todoLabel = this._todoElement.querySelector(".todo__label");
+    todoCheckboxEl.checked = this._data.completed;
+    todoCheckboxEl.id = `todo-${this._data.id}`;
+    todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
   getView() {
-    const todoElement = this._templateElement.content
+    this._todoElement = this._templateElement.content
       .querySelector(".todo")
       .cloneNode(true);
-    const todoNameEl = todoElement.querySelector(".todo__name");
-    const todoCheckboxEl = todoElement.querySelector(".todo__completed");
-    const todoLabel = todoElement.querySelector(".todo__label");
-    const todoDate = todoElement.querySelector(".todo__date");
-    const todoDeleteBtn = todoElement.querySelector(".todo__delete-btn");
+    const todoNameEl = this._todoElement.querySelector(".todo__name");
 
-    return todoElement;
+    const todoDate = this._todoElement.querySelector(".todo__date");
+    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+
+    todoNameEl.textContent = this._data.name;
+    this._generateCheckboxEl();
+    return this._todoElement;
   }
 }
 
