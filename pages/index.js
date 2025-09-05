@@ -37,8 +37,7 @@ const generateTodo = (data) => {
   //   })}`;
   //  }
 
-  //  todoDeleteBtn.addEventListener("click", () => {
-  //    todoElement.remove();
+  //
   //  });
 
   return todoElement;
