@@ -15,17 +15,19 @@ class FormValidator {
     this._errorElement.classList.remove(this._errorClass);
     this._errorElement.textContent = "";
   }
+  _showInputError(inputElement) {
+    this._errorElementId = `#${inputElement.id}-error`;
+    this._errorElement = this._formEl.querySelector(this._errorElementId);
+    inputElement.classList.add(this._inputErrorClass);
+    this._errorElement.classList.add(this._errorClass);
+    this._errorElement.textContent = inputElement.validationMessage;
+  }
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      showInputError(
-        this._formEl,
-        inputElement,
-        inputElement.validationMessage,
-        this._errorClass
-      );
+      this._showInputError(inputElement);
     } else {
-      hideInputError(this._formEl, inputElement);
+      this._hideInputError(inputElement);
     }
   }
   _toggleButtonState(inputElement) {
