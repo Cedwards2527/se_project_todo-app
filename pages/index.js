@@ -14,10 +14,15 @@ const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 const section = new Section({
-  items: [],
-  renderer: () => {},
+  items: [], // pass inital todos
+  renderer: (item) => {
+    const todo = generateTodo(item);
+    todosList.append(todo);
+  },
   containerSelector: ".todos__list",
 });
+
+section.renderItems();
 
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
@@ -58,12 +63,13 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
 
   const values = { name, date, id };
-  renderTodo(values);
+  section.addItem(values);
   closeModal(addTodoPopup);
 });
 
 initialTodos.forEach((item) => {
-  renderTodo(item);
+  const todo = generateTodo(item);
+  section.addItem(todo);
 });
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
