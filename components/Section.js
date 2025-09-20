@@ -9,8 +9,8 @@ class Section {
       this._renderer(item);
     });
   }
-  addItem(element) {
-    this._container.append(element);
+  addItem(item) {
+    this._renderer(item);
   }
 }
 
