@@ -65,5 +65,6 @@ const addTodoPopup = new PopupWithForm({
 addTodoPopup.setEventListeners();
 
 addTodoButton.addEventListener("click", () => {
+  addTodoValidator.resetValidation();
   addTodoPopup.open();
 });
